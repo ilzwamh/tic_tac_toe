@@ -3,8 +3,9 @@
 #include <ctime> 
 using namespace std;
 
-//Построение игровой доски
+//ГЏГ®Г±ГІГ°Г®ГҐГ­ГЁГҐ ГЁГЈГ°Г®ГўГ®Г© Г¤Г®Г±ГЄГЁ
 void PlayingBoard(char board[3][3]) {
+    setlocal(0, "");
     cout << "    1   2   3 \n";
     cout << "  -------------\n";
     for (int i = 0; i < 3; i++) {
@@ -16,9 +17,10 @@ void PlayingBoard(char board[3][3]) {
     }
 }
 
-//Определение победителя
+//ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ®ГЎГҐГ¤ГЁГІГҐГ«Гї
 bool Win(char board[3][3], char player) {
-    //Проверка вертикалей и горизоналей
+    setlocal(0, "");
+    //ГЏГ°Г®ГўГҐГ°ГЄГ  ГўГҐГ°ГІГЁГЄГ Г«ГҐГ© ГЁ ГЈГ®Г°ГЁГ§Г®Г­Г Г«ГҐГ©
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
             return true;
@@ -27,7 +29,7 @@ bool Win(char board[3][3], char player) {
             return true;
         }
     }
-    //Проверка диагоналей
+    //ГЏГ°Г®ГўГҐГ°ГЄГ  Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ©
     if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
         return true;
     }
@@ -38,8 +40,9 @@ bool Win(char board[3][3], char player) {
 }
 
 void Computer(char board[3][3]) {
+    setlocal(0, "");
     bool flag = false, flag1 = false;
-    //Поверка горизонталей
+    //ГЏГ®ГўГҐГ°ГЄГ  ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГҐГ©
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == ' ' && flag1 == false) {
             board[i][2] = 'O';
@@ -54,7 +57,7 @@ void Computer(char board[3][3]) {
             flag1 = true;
         }
     }
-    //Проверка вертикалей
+    //ГЏГ°Г®ГўГҐГ°ГЄГ  ГўГҐГ°ГІГЁГЄГ Г«ГҐГ©
     for (int j = 0; j < 3; j++) {
         if (board[0][j] == 'O' && board[1][j] == 'O' && board[2][j] == ' ' && flag1 == false) {
             board[2][j] = 'O';
@@ -69,7 +72,7 @@ void Computer(char board[3][3]) {
             flag1 = true;
         }
     }
-    //Проверка диагоналей
+    //ГЏГ°Г®ГўГҐГ°ГЄГ  Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ©
     if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == ' ' && flag1 == false) {
         board[2][2] = 'O';
         flag1 = true;
@@ -96,7 +99,7 @@ void Computer(char board[3][3]) {
         flag1 = true;
     }
     if (flag1 == false) {
-        //Проверка горизонталей
+        //ГЏГ°Г®ГўГҐГ°ГЄГ  ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГҐГ©
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == ' ' && flag == false) {
                 board[i][2] = 'O';
@@ -111,7 +114,7 @@ void Computer(char board[3][3]) {
                 flag = true;
             }
         }
-        //Проверка вертикалей
+        //ГЏГ°Г®ГўГҐГ°ГЄГ  ГўГҐГ°ГІГЁГЄГ Г«ГҐГ©
         for (int j = 0; j < 3; j++) {
             if (board[0][j] == 'X' && board[1][j] == 'X' && board[2][j] == ' ' && flag == false) {
                 board[2][j] = 'O';
@@ -126,7 +129,7 @@ void Computer(char board[3][3]) {
                 flag = true;
             }
         }
-        //Проверка диагоналей
+        //ГЏГ°Г®ГўГҐГ°ГЄГ  Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ©
         if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == ' ' && flag == false) {
             board[2][2] = 'O';
             flag = true;
@@ -153,7 +156,7 @@ void Computer(char board[3][3]) {
             flag = true;
         }
     }
-    //Рандомный ход, если для компьютера нет разницы, куда ходить
+    //ГђГ Г­Г¤Г®Г¬Г­Г»Г© ГµГ®Г¤, ГҐГ±Г«ГЁ Г¤Г«Гї ГЄГ®Г¬ГЇГјГѕГІГҐГ°Г  Г­ГҐГІ Г°Г Г§Г­ГЁГ¶Г», ГЄГіГ¤Г  ГµГ®Г¤ГЁГІГј
     if (flag == false && flag1 == false) {
         int row, column;
         srand(time(0));
