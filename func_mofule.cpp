@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
 
-//Построение игровой доски
+//РџРѕСЃС‚СЂРѕРµРЅРёРµ РёРіСЂРѕРІРѕР№ РґРѕСЃРєРё
 void PlayingBoard(char board[3][3]) {
     setlocale(0, "");
     cout << "    1   2   3 \n";
@@ -17,10 +17,9 @@ void PlayingBoard(char board[3][3]) {
     }
 }
 
-//Определение победителя
+//РћРїСЂРµРґРµР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»СЏ
 bool Win(char board[3][3], char player) {
-    setlocale(0, "");
-    //Проверка вертикалей и горизоналей
+    //РџСЂРѕРІРµСЂРєР° РІРµСЂС‚РёРєР°Р»РµР№ Рё РіРѕСЂРёР·РѕРЅР°Р»РµР№
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
             return true;
@@ -29,7 +28,7 @@ bool Win(char board[3][3], char player) {
             return true;
         }
     }
-    //Проверка диагоналей
+    //РџСЂРѕРІРµСЂРєР° РґРёР°РіРѕРЅР°Р»РµР№
     if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
         return true;
     }
@@ -40,9 +39,8 @@ bool Win(char board[3][3], char player) {
 }
 
 void Computer(char board[3][3]) {
-    setlocale(0, "");
     bool flag = false, flag1 = false;
-    //Поверка горизонталей
+    //РџРѕРІРµСЂРєР° РіРѕСЂРёР·РѕРЅС‚Р°Р»РµР№
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == ' ' && flag1 == false) {
             board[i][2] = 'O';
@@ -57,7 +55,7 @@ void Computer(char board[3][3]) {
             flag1 = true;
         }
     }
-    //Проверка вертикалей
+    //РџСЂРѕРІРµСЂРєР° РІРµСЂС‚РёРєР°Р»РµР№
     for (int j = 0; j < 3; j++) {
         if (board[0][j] == 'O' && board[1][j] == 'O' && board[2][j] == ' ' && flag1 == false) {
             board[2][j] = 'O';
@@ -72,7 +70,7 @@ void Computer(char board[3][3]) {
             flag1 = true;
         }
     }
-    //Проверка диагоналей
+    //РџСЂРѕРІРµСЂРєР° РґРёР°РіРѕРЅР°Р»РµР№
     if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == ' ' && flag1 == false) {
         board[2][2] = 'O';
         flag1 = true;
@@ -99,7 +97,7 @@ void Computer(char board[3][3]) {
         flag1 = true;
     }
     if (flag1 == false) {
-        //Проверка горизонталей
+        //РџСЂРѕРІРµСЂРєР° РіРѕСЂРёР·РѕРЅС‚Р°Р»РµР№
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == ' ' && flag == false) {
                 board[i][2] = 'O';
@@ -114,7 +112,7 @@ void Computer(char board[3][3]) {
                 flag = true;
             }
         }
-        //Проверка вертикалей
+        //РџСЂРѕРІРµСЂРєР° РІРµСЂС‚РёРєР°Р»РµР№
         for (int j = 0; j < 3; j++) {
             if (board[0][j] == 'X' && board[1][j] == 'X' && board[2][j] == ' ' && flag == false) {
                 board[2][j] = 'O';
@@ -129,7 +127,7 @@ void Computer(char board[3][3]) {
                 flag = true;
             }
         }
-        //Проверка диагоналей
+        //РџСЂРѕРІРµСЂРєР° РґРёР°РіРѕРЅР°Р»РµР№
         if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == ' ' && flag == false) {
             board[2][2] = 'O';
             flag = true;
@@ -156,7 +154,7 @@ void Computer(char board[3][3]) {
             flag = true;
         }
     }
-    //Рандомный ход, если для компьютера нет разницы, куда ходить
+    //Р Р°РЅРґРѕРјРЅС‹Р№ С…РѕРґ, РµСЃР»Рё РґР»СЏ РєРѕРјРїСЊСЋС‚РµСЂР° РЅРµС‚ СЂР°Р·РЅРёС†С‹, РєСѓРґР° С…РѕРґРёС‚СЊ
     if (flag == false && flag1 == false) {
         int row, column;
         srand(time(0));
